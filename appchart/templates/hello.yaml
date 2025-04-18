@@ -5,6 +5,7 @@ metadata:
   name: hello-world
   namespace: {{ .Values.namespace }}
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80
@@ -43,7 +44,7 @@ metadata:
   name: hello-world
   namespace: {{ .Values.namespace }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /test
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
