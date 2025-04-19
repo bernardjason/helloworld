@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: hello-world
+  namespace: argocd
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Example Project
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-root
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: ''
+    targetRevision: ''
+    path: ''
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hello-world
+
