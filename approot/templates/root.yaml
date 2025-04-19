@@ -8,6 +8,12 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   description: Example Project
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: '*'
+  sourceRepos:
+  - 'https://github.com/bernardjason/*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
