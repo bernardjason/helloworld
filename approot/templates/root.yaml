@@ -15,7 +15,7 @@ metadata:
   name: hello-world-app-root
   namespace: hello-world
 spec:
-  project: default
+  project: hello-world
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
