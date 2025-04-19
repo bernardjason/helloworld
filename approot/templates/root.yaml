@@ -13,7 +13,7 @@ spec:
     namespace: '*'
     server: '*'
   sourceRepos:
-  - 'https://github.com/bernardjason/*'
+  - 'https://github.com/bernardjason/helloworld.git'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
