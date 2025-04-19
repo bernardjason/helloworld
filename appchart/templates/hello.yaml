@@ -60,7 +60,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: fred-hello-world
+            name: hello-world
             port:
               number: 80
 
