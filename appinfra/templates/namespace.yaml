@@ -10,6 +10,7 @@ metadata:
   namespace: argocd
 spec:
   project: hello-world
+  namespace: hello-world
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
