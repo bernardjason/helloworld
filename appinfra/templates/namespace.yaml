@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
-    path: 'appcode'
+    path: 'appchart'
   destination:
     server: https://kubernetes.default.svc
     namespace: hello-world
