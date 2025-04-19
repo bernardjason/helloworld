@@ -12,7 +12,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-root
+  name: hello-world-app-root
   namespace: argocd
 spec:
   project: default
