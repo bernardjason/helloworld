@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: hello-world
-  namespace: hello-world
+  namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hello-world-app-root
-  namespace: argocd
+  namespace: hello-world
 spec:
   project: default
   source:
