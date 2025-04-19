@@ -14,18 +14,18 @@ metadata:
 spec:
   description: Example Project
 ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: hello-world-app-root
-#   namespace: hello-world
-# spec:
-#   project: hello-world
-#   source:
-#     repoURL: 'https://github.com/bernardjason/helloworld.git'
-#     targetRevision: 'HEAD'
-#     path: 'appinfra'
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: hello-world
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world-app-root
+  namespace: hello-world
+spec:
+  project: hello-world
+  source:
+    repoURL: 'https://github.com/bernardjason/helloworld.git'
+    targetRevision: 'HEAD'
+    path: 'appinfra'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hello-world
 
