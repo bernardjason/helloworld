@@ -49,12 +49,12 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    #kubernetes.io/ingress.scheme: internet-facing
-    #kubernetes.io/ingress.target-type: ip
+    kubernetes.io/ingress.scheme: internet-facing
+    kubernetes.io/ingress.target-type: ip
     # nginx.ingress.kubernetes.io/aws-load-balancer-type: "nlb"
     # nginx.ingress.kubernetes.io/aws-load-balancer-internal: "true"
 spec:
-  ingressClassName: nginx
+  ingressClassName: alb
   rules:
   - http:
       paths:
