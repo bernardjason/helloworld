@@ -1,20 +1,24 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: hello-world
+  name: {{.Values.name}}-ns
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hello-world-application
+  name: {{.Values.name}}-application
   namespace: argocd
 spec:
-  project: hello-world
-  # namespace: argocd
+  project: {{.Values.name}}-project
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
     path: 'appchart'
+    parameters:
+    - name: name
+      value: '{{.Values.name}}'
+    - name: message
+      value: '{{.Values.message}}'
   destination:
     server: https://kubernetes.default.svc
     namespace: hello-world
