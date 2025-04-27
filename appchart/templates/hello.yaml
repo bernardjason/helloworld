@@ -40,6 +40,13 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "128M"
+            limits:
+              memory: "64Mi"
+              cpu: "128M"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
