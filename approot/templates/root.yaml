@@ -30,8 +30,8 @@ spec:
     path: 'appinfra'
     helm:
       values: |
-    - name: '{{.Values.name}}'
-    - message: '{{.Values.message}}'
+         name: '{{.Values.name}}'
+         message: '{{.Values.message}}'
   destination:
     server: https://kubernetes.default.svc
     namespace: hello-world
