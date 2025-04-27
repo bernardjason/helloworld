@@ -28,11 +28,10 @@ spec:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
     path: 'appinfra'
-    parameters:
-    - name: name
-      value: '{{.Values.name}}'
-    - name: message
-      value: '{{.Values.message}}'
+    helm:
+      values: |
+    - name: '{{.Values.name}}'
+    - message: '{{.Values.message}}'
   destination:
     server: https://kubernetes.default.svc
     namespace: hello-world
