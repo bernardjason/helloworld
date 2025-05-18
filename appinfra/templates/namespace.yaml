@@ -10,6 +10,10 @@ metadata:
   namespace: argocd
 spec:
   project: {{.Values.name}}-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'

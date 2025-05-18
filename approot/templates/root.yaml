@@ -16,6 +16,10 @@ spec:
     server: '*'
   sourceRepos:
   - 'https://github.com/bernardjason/helloworld.git'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -24,6 +28,10 @@ metadata:
   namespace: argocd
 spec:
   project: {{.Values.name}}-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   source:
     repoURL: 'https://github.com/bernardjason/helloworld.git'
     targetRevision: 'HEAD'
