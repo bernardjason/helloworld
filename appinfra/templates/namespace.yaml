@@ -9,14 +9,14 @@ metadata:
   name: {{.Values.name}}-application
   namespace: argocd
 spec:
-  project: {{.Values.name}}-project
+  project: {{.Values.project}}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
   source:
-    repoURL: 'https://github.com/bernardjason/helloworld.git'
-    targetRevision: 'HEAD'
+    repoURL: {{.Values.repoURL | quote}}
+    targetRevision: {{.Values.targetRevision | quote}}
     path: 'appchart'
     helm:
       values: |
@@ -24,5 +24,4 @@ spec:
          message: '{{.Values.message}}'
   destination:
     server: https://kubernetes.default.svc
-    namespace: hello-world
-
+    namespace: {{.Values.name}}-ns

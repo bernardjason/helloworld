@@ -1,0 +1,5 @@
+name: hello
+project: hello
+message: Hello from the hello Argo CD project
+repoURL: https://github.com/bernardjason/helloworld.git
+targetRevision: HEAD

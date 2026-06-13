@@ -1,42 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: {{.Values.name}}-project
-  namespace: argocd
-  # Finalizer that ensures that project is not deleted until it is not referenced by any application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
-  destinations:
-  - name: '*'
-    namespace: '*'
-    server: '*'
-  sourceRepos:
-  - 'https://github.com/bernardjason/helloworld.git'
----
-apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{.Values.name}}-app-root
   namespace: argocd
 spec:
-  project: {{.Values.name}}-project
+  project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
   source:
-    repoURL: 'https://github.com/bernardjason/helloworld.git'
-    targetRevision: 'HEAD'
+    repoURL: {{.Values.repoURL | quote}}
+    targetRevision: {{.Values.targetRevision | quote}}
     path: 'appinfra'
     helm:
       values: |
          name: '{{.Values.name}}'
+         project: '{{.Values.project}}'
          message: '{{.Values.message}}'
+         repoURL: '{{.Values.repoURL}}'
+         targetRevision: '{{.Values.targetRevision}}'
   destination:
     server: https://kubernetes.default.svc
-    namespace: hello-world
-
+    namespace: argocd
