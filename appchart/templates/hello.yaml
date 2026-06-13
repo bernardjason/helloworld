@@ -47,24 +47,3 @@ spec:
             limits:
               memory: "32Mi"
               cpu: "32m"
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{.Values.name}}-ingress
-  namespace: {{.Values.name}}-ns
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  ingressClassName: nginx
-  rules:
-  - http:
-      paths:
-      - path: /{{.Values.name}}
-        pathType: Prefix
-        backend:
-          service:
-            name: {{.Values.name}}-svc
-            port:
-              name: http
-
