@@ -1,5 +1,40 @@
 ---
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{.Values.name}}-sa
+  namespace: {{.Values.name}}-ns
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{.Values.name}}-pod-reader
+  namespace: {{.Values.name}}-ns
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{.Values.name}}-pod-reader
+  namespace: {{.Values.name}}-ns
+subjects:
+  - kind: ServiceAccount
+    name: {{.Values.name}}-sa
+    namespace: {{.Values.name}}-ns
+roleRef:
+  kind: Role
+  name: {{.Values.name}}-pod-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: {{.Values.name}}-svc
@@ -29,6 +64,7 @@ spec:
       labels:
         app: {{.Values.name}}-pod
     spec:
+      serviceAccountName: {{.Values.name}}-sa
       containers:
         - name: {{.Values.name}}
           image: bernardjason/helloworld:2.0
